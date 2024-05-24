@@ -1,101 +1,67 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const num1Input = document.getElementById('num1');
-    const num2Input = document.getElementById('num2');
-    const resultMessage = document.getElementById('resultMessage');
-    const operationSelect = document.getElementById('operation');
+function calculate() {
+    const num1 = parseFloat(prompt("Ingresa el primer número:"));
+    const num2 = parseFloat(prompt("Ingresa el segundo número (si aplica):"));
+    const operation = prompt("Ingresa la operación (sum, subtract, multiply, divide, evenCount, primeCount, unitConvert):");
 
-    function calculate() {
-        const num1 = parseFloat(num1Input.value);
-        const num2 = parseFloat(num2Input.value);
-        const operation = operationSelect.value;
+    let result;
 
-        if (isNaN(num1) || (isNaN(num2) && operation !== 'evenCount' && operation !== 'primeCount' && operation !== 'unitConvert')) {
-            resultMessage.textContent = 'Por favor, ingresa números válidos.';
-            return;
+    if (operation === 'sum') {
+        result = num1 + num2;
+    } else if (operation === 'subtract') {
+        result = num1 - num2;
+    } else if (operation === 'multiply') {
+        result = num1 * num2;
+    } else if (operation === 'divide') {
+        if (num2 === 0) {
+            result = 'No se puede dividir por cero';
+        } else {
+            result = num1 / num2;
         }
+    } else if (operation === 'evenCount') {
+        result = countEvens(num1);
+    } else if (operation === 'primeCount') {
+        result = countPrimes(num1);
+    } else if (operation === 'unitConvert') {
+        result = convertUnits(num1);
+    } else {
+        result = 'Operación no válida';
+    }
 
-        let result;
-        switch (operation) {
-            case 'sum':
-                result = sum(num1, num2);
-                break;
-            case 'subtract':
-                result = subtract(num1, num2);
-                break;
-            case 'multiply':
-                result = multiply(num1, num2);
-                break;
-            case 'divide':
-                result = divide(num1, num2);
-                break;
-            case 'evenCount':
-                result = countEvens(num1);
-                break;
-            case 'primeCount':
-                result = countPrimes(num1);
-                break;
-            case 'unitConvert':
-                result = convertUnits(num1);
-                break;
-            default:
-                result = 'Operación no válida';
+    console.log(`Resultado: ${result}`);
+}
+
+function countEvens(n) {
+    let count = 0;
+    for (let i = 1; i <= n; i++) {
+        if (i % 2 === 0) {
+            count++;
         }
-
-        resultMessage.textContent = `Resultado: ${result}`;
     }
+    return count;
+}
 
-    function sum(a, b) {
-        return a + b;
-    }
+function countPrimes(n) {
+    let count = 0;
 
-    function subtract(a, b) {
-        return a - b;
-    }
-
-    function multiply(a, b) {
-        return a * b;
-    }
-
-    function divide(a, b) {
-        if (b === 0) {
-            return 'No se puede dividir por cero';
+    function isPrime(num) {
+        if (num <= 1) return false;
+        for (let i = 2; i < num; i++) {
+            if (num % i === 0) return false;
         }
-        return a / b;
+        return true;
     }
 
-    function countEvens(n) {
-        let count = 0;
-        for (let i = 1; i <= n; i++) {
-            if (i % 2 === 0) {
-                count++;
-            }
+    for (let i = 1; i <= n; i++) {
+        if (isPrime(i)) {
+            count++;
         }
-        return count;
     }
+    return count;
+}
 
-    function countPrimes(n) {
-        let count = 0;
+function convertUnits(meters) {
+    return `${meters} metros son ${meters / 1000} kilómetros`;
+}
 
-        function isPrime(num) {
-            if (num <= 1) return false;
-            for (let i = 2; i < num; i++) {
-                if (num % i === 0) return false;
-            }
-            return true;
-        }
-
-        for (let i = 1; i <= n; i++) {
-            if (isPrime(i)) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    function convertUnits(meters) {
-        return `${meters} metros son ${meters / 1000} kilómetros`;
-    }
-
-    // Exponer la función calculate al contexto global para poder llamarla desde el HTML
-    window.calculate = calculate;
-});
+// Llamar a la función calculate desde la consola
+calculate();
