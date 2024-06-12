@@ -1,3 +1,37 @@
+// Clase para operaciones matemáticas
+class MathOperations {
+    constructor() {}
+
+    // Métodos estáticos para las operaciones
+    static sum(a, b) {
+        return a + b;
+    }
+
+    static subtract(a, b) {
+        return a - b;
+    }
+
+    static multiply(a, b) {
+        return a * b;
+    }
+
+    static divide(a, b) {
+        return b !== 0 ? a / b : 'No se puede dividir por cero';
+    }
+
+    static sqrt(a) {
+        return Math.sqrt(a);
+    }
+
+    static pow(a, b) {
+        return Math.pow(a, b);
+    }
+
+    static log(a) {
+        return Math.log(a);
+    }
+}
+
 // Función principal para iniciar el cálculo
 function calculate() {
     // Capturar entradas mediante prompt()
@@ -8,16 +42,16 @@ function calculate() {
     // Declarar variables y objetos necesarios
     let result;
     const operations = {
-        sum: (a, b) => a + b,
-        subtract: (a, b) => a - b,
-        multiply: (a, b) => a * b,
-        divide: (a, b) => b !== 0 ? a / b : 'No se puede dividir por cero',
+        sum: (a, b) => MathOperations.sum(a, b),
+        subtract: (a, b) => MathOperations.subtract(a, b),
+        multiply: (a, b) => MathOperations.multiply(a, b),
+        divide: (a, b) => MathOperations.divide(a, b),
         evenCount: (n) => countEvens(n),
         primeCount: (n) => countPrimes(n),
         unitConvert: (meters) => convertUnits(meters),
-        sqrt: (a) => Math.sqrt(a),
-        pow: (a, b) => Math.pow(a, b),
-        log: (a) => Math.log(a)
+        sqrt: (a) => MathOperations.sqrt(a),
+        pow: (a, b) => MathOperations.pow(a, b),
+        log: (a) => MathOperations.log(a)
     };
 
     // Validar la operación ingresada
@@ -52,13 +86,13 @@ function countPrimes(n) {
     let count = 0;
     const primesArray = [];  // Array para almacenar números primos
 
-    function isPrime(num) {
+    const isPrime = (num) => {
         if (num <= 1) return false;
         for (let i = 2; i < num; i++) {
             if (num % i === 0) return false;
         }
         return true;
-    }
+    };
 
     for (let i = 1; i <= n; i++) {
         if (isPrime(i)) {
@@ -79,5 +113,37 @@ function convertUnits(meters) {
     return `${conversion.meters} metros son ${conversion.kilometers} kilómetros`;
 }
 
+// Función para ejecutar pruebas de arrays
+function arrayMethodsDemo() {
+    const sampleArray = [1, 2, 3, 4, 5, 6];
+
+    // Propiedad length
+    console.log("Length:", sampleArray.length);
+
+    // Método push
+    sampleArray.push(7);
+    console.log("After push:", sampleArray);
+
+    // Método pop
+    sampleArray.pop();
+    console.log("After pop:", sampleArray);
+
+    // Método shift
+    sampleArray.shift();
+    console.log("After shift:", sampleArray);
+
+    // Método filter (usando arrow function)
+    const evenNumbers = sampleArray.filter(num => num % 2 === 0);
+    console.log("Even numbers (filter):", evenNumbers);
+
+    // Método forEach (usando arrow function)
+    sampleArray.forEach(num => console.log("forEach:", num));
+
+    // Método find (usando arrow function)
+    const firstEven = sampleArray.find(num => num % 2 === 0);
+    console.log("First even number (find):", firstEven);
+}
+
 // Llamar a la función calculate desde la consola
 calculate();
+arrayMethodsDemo(); // Ejecutar demostración de métodos de arrays
