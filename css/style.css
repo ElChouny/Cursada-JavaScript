@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    width: 100%;
 }
 
 header {
@@ -11,6 +12,7 @@ header {
     color: white;
     padding: 1rem;
     text-align: center;
+    width: 100%;
 }
 
 nav ul {
@@ -86,15 +88,17 @@ main {
     padding: 10px 20px;
     cursor: pointer;
 }
+
 /*!CATEGORIAS*/
 
-main{
-background-color: #fdfffe;
+main {
+    background-color: #fdfffe;
 }
 
-main h2{
+main h2 {
     text-align: center;
 }
+
 .categorias {
     font-family: "Poppins", sans-serif;
     font-size: 10px;
@@ -106,12 +110,12 @@ main h2{
     grid-template-columns: repeat(3, 1fr);
     flex-wrap: nowrap;
     padding-left: 20px;
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
 
-.categorias div{
+.categorias div {
     align-items: center;
-    border:  #004d40 solid 2px;
+    border: #004d40 solid 2px;
     padding: 5px;
     margin-left: 20px;
     width: 300px;
@@ -120,24 +124,25 @@ main h2{
     justify-content: space-between;
 }
 
-.categorias div ul{
+.categorias div ul {
     list-style: none;
     font-style: normal;
     font-size: 15px;
     margin: 15px;
 }
 
-.categorias div ul li{
-text-align: center;
+.categorias div ul li {
+    text-align: center;
 }
 
 .categorias img {
     width: 250px;
     height: 250px;
     padding-bottom: 20px;
-    
+
     src: url(images/Rugby-shop/arg-pelota.png);
 }
+
 /*CAMISETAS*/
 
 .Camisetas {
@@ -166,11 +171,12 @@ text-align: center;
     margin: 30px;
 }
 
-.Camisetas div img{
+.Camisetas div img {
     object-fit: cover;
     width: 200px;
     height: 200px;
 }
+
 /*BALONES*/
 .Balones {
     font-family: "Poppins", sans-serif;
@@ -184,7 +190,8 @@ text-align: center;
     align-items: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);}
+    grid-template-rows: repeat(2, 1fr);
+}
 
 .Balones div {
     grid-column-gap: 25px;
@@ -197,10 +204,11 @@ text-align: center;
     margin: 30px;
 }
 
-.Balones div img{
+.Balones div img {
     width: 200px;
     height: 200px;
 }
+
 /*ACCESORIOS*/
 .Accesorios {
     font-family: "Poppins", sans-serif;
@@ -229,7 +237,7 @@ text-align: center;
     margin: 30px;
 }
 
-.Accesorios div img{
+.Accesorios div img {
     width: 200px;
     height: 200px;
 }
@@ -296,6 +304,48 @@ text-align: center;
 #total {
     color: #003366;
     font-weight: bold;
+}
+
+
+/*?CONTACTO*/
+
+
+#contacto {
+    color: black;
+    flex-direction: column;
+    text-align: center;
+    border: none;
+}
+
+#contacto .form-contacto {
+    color: black;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#contacto .form-contacto div {
+    padding: 5px;
+    color: rgb(48, 88, 122);
+    font-weight: 500px;
+    font-size: 20px;
+}
+
+#contacto .form-contacto div input {
+    width: 160px;
+    border: rgb(136, 63, 63) 1px solid;
+    border-radius: 10px;
+    text-align: center;
+    margin: 5px;
+    color: black;
+    font-weight: 200px;
+    margin: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: white;
+    color: black;
 }
 
 /*?FOOTER*/
