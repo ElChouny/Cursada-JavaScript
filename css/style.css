@@ -1,3 +1,4 @@
+/*?INDEX*/
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
@@ -30,55 +31,280 @@ nav ul li a {
 }
 
 main {
-    padding: 1rem;
+    padding: 20px;
 }
 
+/* Estilos para la sección de Productos Destacados */
 .productos-destacados {
+    list-style: none;
+    text-align: center;
+    margin: 50px 0;
+}
+
+.carousel-container {
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.carousel {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    transition: transform 0.5s ease-in-out;
 }
 
 .producto {
-    border: 1px solid #ccc;
-    padding: 1rem;
-    margin: 1rem;
-    width: 200px;
-    text-align: center;
+    min-width: 25%;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
 .producto img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
 }
 
-#categorias {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        grid-column-gap: 15px;
-        grid-row-gap: 15px;
+.producto h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
 }
 
-.producto-detalle {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 15px;
-    grid-row-gap: 15px;
-    border: 5px solid #ccc;
-    padding: 1rem;
-    margin: 1rem;
-    width: 200px;
-    text-align: center;
-    }
+.producto p {
+    font-size: 1em;
+    color: #333;
+}
 
+.carousel-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.carousel-button {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+/*!CATEGORIAS*/
+
+main{
+background-color: #fdfffe;
+}
+
+main h2{
+    text-align: center;
+}
+.categorias {
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 10px;
+    font-style: normal;
+    text-align: center;
+    display: grid;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: nowrap;
+    padding-left: 20px;
+    margin-bottom:20px;
+}
+
+.categorias div{
+    align-items: center;
+    border:  #004d40 solid 2px;
+    padding: 5px;
+    margin-left: 20px;
+    width: 300px;
+    height: 300px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.categorias div ul{
+    list-style: none;
+    font-style: normal;
+    font-size: 15px;
+    margin: 15px;
+}
+
+.categorias div ul li{
+text-align: center;
+}
+
+.categorias img {
+    width: 250px;
+    height: 250px;
+    padding-bottom: 20px;
+    
+    src: url(images/Rugby-shop/arg-pelota.png);
+}
+/*CAMISETAS*/
+
+.Camisetas {
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 10px;
+    padding: 25px;
+    margin: 25px;
+    font-style: normal;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.Camisetas div {
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    height: 300px;
+    width: 200px;
+    border: 2px rgb(219, 144, 4) solid;
+    padding: 25px;
+    background-color: rgba(219, 168, 0, 0.897);
+    margin: 30px;
+}
+
+.Camisetas div img{
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
+/*BALONES*/
+.Balones {
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 10px;
+    padding: 25px;
+    margin: 25px;
+    font-style: normal;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);}
+
+.Balones div {
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    height: 300px;
+    width: 300px;
+    border: 2px rgb(219, 144, 4) solid;
+    padding: 25px;
+    background-color: rgba(219, 168, 0, 0.897);
+    margin: 30px;
+}
+
+.Balones div img{
+    width: 200px;
+    height: 200px;
+}
+/*ACCESORIOS*/
+.Accesorios {
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+    font-weight: 10px;
+    padding: 25px;
+    margin: 25px;
+    font-style: normal;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+
+.Accesorios div {
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+    height: 300px;
+    width: 300px;
+    border: 2px rgb(219, 144, 4) solid;
+    padding: 25px;
+    background-color: rgba(219, 168, 0, 0.897);
+    margin: 30px;
+}
+
+.Accesorios div img{
+    width: 200px;
+    height: 200px;
+}
+
+/*!CARRITO*/
+
+#carrito-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#carrito-container .producto {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+    display: flex;
+    width: 100px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#carrito-container .producto:last-child {
+    border-bottom: none;
+}
+
+#carrito-container .producto img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 4px;
+}
+
+#carrito-container .producto h3 {
+    flex: 1;
+    margin: 0 20px;
+}
+
+#carrito-container .producto p {
+    color: #003366;
+    font-size: 16px;
+    margin: 0;
+}
+
+#carrito-container .producto button {
+    background-color: #ff3333;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    justify-content: space-between;
+}
+
+#carrito-container .producto button:hover {
+    background-color: #cc0000;
+}
+
+#total-container {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+#total {
+    color: #003366;
+    font-weight: bold;
+}
+
+/*?FOOTER*/
 footer {
     background-color: #004d40;
     color: white;
     text-align: center;
     padding: 1rem;
-    position: fixed;
+    /*position: fixed;*/
     bottom: 0;
     width: 100%;
 }
