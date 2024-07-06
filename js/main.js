@@ -42,42 +42,27 @@ function actualizarTotal() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const total = carrito.reduce((sum, producto) => sum + producto.precio, 0);
     const totalElement = document.getElementById('total');
-    totalElement.textContent = `U$D${total.toFixed(2)}`;
+    if (totalElement) {
+        totalElement.textContent = `U$D${total.toFixed(2)}`;
+    }
+}
+
+// Función para cargar productos desde un archivo JSON local
+async function cargarProductos() {
+    try {
+        const response = await fetch('productos.json');
+        const productos = await response.json();
+        productos.forEach(producto => {
+            // Código para agregar productos al DOM
+        });
+    } catch (error) {
+        console.error('Error al cargar productos:', error);
+    }
 }
 
 // Inicializar el carrito en el DOM al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     actualizarCarritoDOM();
     actualizarTotal();
-});
-
-// Event listener para los botones de agregar al carrito
-document.querySelectorAll('.agregar-carrito').forEach(button => {
-    button.addEventListener('click', (e) => {
-        const nombre = e.target.dataset.nombre;
-        const precio = parseFloat(e.target.dataset.precio);
-        const imagen = e.target.closest('div').querySelector('img').src;
-        agregarAlCarrito(nombre, precio, imagen);
-    });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.getElementById('carousel');
-    const prevButton = document.getElementById('prev');
-    const nextButton = document.getElementById('next');
-    let offset = 0;
-
-    prevButton.addEventListener('click', () => {
-        if (offset > 0) {
-            offset -= 100;
-            carousel.style.transform = `translateX(-${offset}%)`;
-        }
-    });
-
-    nextButton.addEventListener('click', () => {
-        if (offset < 300) { // 300 because we have 4 items, and each takes 25%
-            offset += 100;
-            carousel.style.transform = `translateX(-${offset}%)`;
-        }
-    });
+    cargarProductos();
 });

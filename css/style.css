@@ -37,56 +37,75 @@ main {
 }
 
 /* Estilos para la sección de Productos Destacados */
-.productos-destacados {
-    list-style: none;
-    text-align: center;
-    margin: 50px 0;
-}
-
-.carousel-container {
-    overflow: hidden;
+/* Estilos básicos del carrusel */
+/* Estilos básicos del carrusel */
+.carousel {
     width: 100%;
     margin: 0 auto;
+    padding: 20px 0;
 }
 
-.carousel {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+.slick-list {
+    overflow: hidden;
+    width: 100%;
+}
+
+.slick-track {
+    display: flex !important;
 }
 
 .producto {
-    min-width: 25%;
-    box-sizing: border-box;
+    width: 100%;
     padding: 10px;
+    box-sizing: border-box;
+    transition: transform 0.5s ease;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .producto img {
     width: 100%;
     height: auto;
+    display: block;
+    border-radius: 5px 5px 0 0;
 }
 
 .producto h3 {
     font-size: 1.2em;
-    margin: 10px 0;
+    margin: 0.5em 0;
 }
 
 .producto p {
     font-size: 1em;
-    color: #333;
+    margin: 0.5em 0;
+    color: #555;
 }
 
-.carousel-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.carousel-button {
-    background: #333;
-    color: #fff;
+.producto button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
     border: none;
-    padding: 10px 20px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.producto button:hover {
+    background-color: #0056b3;
+}
+
+/* Ajustes para los puntos de navegación */
+.slick-dots {
+    bottom: -30px;
+}
+
+.slick-prev, .slick-next {
+    color: black;
 }
 
 /*!CATEGORIAS*/
