@@ -12,7 +12,15 @@ function agregarAlCarrito(nombre, precio, imagen) {
     actualizarCarritoDOM();
     actualizarTotal();
 }
-
+// Event listener para los botones de agregar al carrito
+document.querySelectorAll('.agregar-carrito').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const nombre = e.target.dataset.nombre;
+        const precio = parseFloat(e.target.dataset.precio);
+        const imagen = e.target.closest('.producto').querySelector('img').src;
+        agregarAlCarrito(nombre, precio, imagen);
+    });
+});
 // Función para actualizar el carrito en el DOM
 function actualizarCarritoDOM() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];

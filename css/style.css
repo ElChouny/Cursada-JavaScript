@@ -164,7 +164,7 @@ main h2 {
 
 /*CAMISETAS*/
 
-.Camisetas {
+.producto {
     font-family: "Poppins", sans-serif;
     font-size: 10px;
     font-weight: 10px;
@@ -179,7 +179,7 @@ main h2 {
     grid-template-rows: repeat(3, 1fr);
 }
 
-.Camisetas div {
+.producto div {
     grid-column-gap: 25px;
     grid-row-gap: 25px;
     height: 300px;
@@ -190,14 +190,15 @@ main h2 {
     margin: 30px;
 }
 
-.Camisetas div img {
+.producto div img {
     object-fit: cover;
     width: 200px;
     height: 200px;
+    align-items: center;
 }
 
 /*BALONES*/
-.Balones {
+.producto {
     font-family: "Poppins", sans-serif;
     font-size: 10px;
     font-weight: 10px;
@@ -212,7 +213,7 @@ main h2 {
     grid-template-rows: repeat(2, 1fr);
 }
 
-.Balones div {
+.producto div {
     grid-column-gap: 25px;
     grid-row-gap: 25px;
     height: 300px;
@@ -223,13 +224,13 @@ main h2 {
     margin: 30px;
 }
 
-.Balones div img {
+.producto div img {
     width: 200px;
     height: 200px;
 }
 
 /*ACCESORIOS*/
-.Accesorios {
+.producto {
     font-family: "Poppins", sans-serif;
     font-size: 10px;
     font-weight: 10px;
@@ -245,7 +246,7 @@ main h2 {
 }
 
 
-.Accesorios div {
+.producto div {
     grid-column-gap: 25px;
     grid-row-gap: 25px;
     height: 300px;
@@ -256,7 +257,7 @@ main h2 {
     margin: 30px;
 }
 
-.Accesorios div img {
+.producto div img {
     width: 200px;
     height: 200px;
 }
