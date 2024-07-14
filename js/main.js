@@ -6,8 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // Función para agregar productos al carrito
 function agregarAlCarrito(nombre, precio, imagen) {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    const producto = { nombre, precio, imagen, cantidad: 1 }; // Agregamos cantidad inicial
-    carrito.push(producto);
+    const productoExistente = carrito.find(producto => producto.nombre === nombre);
+    if (productoExistente) {
+        productoExistente.cantidad += 1;
+    } else {
+        const producto = { nombre, precio, imagen, cantidad: 1 };
+        carrito.push(producto);
+    }
     localStorage.setItem('carrito', JSON.stringify(carrito));
     actualizarCarritoDOM();
     actualizarTotal();
@@ -16,18 +21,12 @@ function agregarAlCarrito(nombre, precio, imagen) {
 // Event listener para los botones de agregar al carrito
 document.querySelectorAll('.agregar-carrito').forEach(button => {
     button.addEventListener('click', (e) => {
-        const productoDiv = e.target.closest('.producto'); // Selecciona el contenedor del producto
+        const productoDiv = e.target.closest('.producto');
         if (productoDiv) {
             const nombre = productoDiv.dataset.nombre;
             const precio = parseFloat(productoDiv.dataset.precio);
-            const imagen = productoDiv.querySelector('img').src; // Selecciona la imagen dentro del contenedor del producto
-
-            // Depuración: Verificar datos del producto
-            console.log('Producto seleccionado:', { nombre, precio, imagen });
-
+            const imagen = productoDiv.querySelector('img').src;
             agregarAlCarrito(nombre, precio, imagen);
-        } else {
-            console.error('Error: no se pudo encontrar el contenedor del producto para el botón clicado.');
         }
     });
 });
@@ -52,16 +51,13 @@ function actualizarCarritoDOM() {
             `;
             carritoContainer.appendChild(productoDiv);
 
-            // Event listener para actualizar cantidad y total al cambiar el input
             const cantidadInput = productoDiv.querySelector(`#cantidad-${index}`);
-            if (cantidadInput) {
-                cantidadInput.addEventListener('change', () => {
-                    producto.cantidad = parseInt(cantidadInput.value);
-                    localStorage.setItem('carrito', JSON.stringify(carrito));
-                    actualizarTotal();
-                    actualizarCarritoDOM(); // Actualizar nuevamente por si hay cambios en otros productos
-                });
-            }
+            cantidadInput.addEventListener('change', () => {
+                producto.cantidad = parseInt(cantidadInput.value);
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                actualizarTotal();
+                actualizarCarritoDOM(); // Actualizar nuevamente por si hay cambios en otros productos
+            });
         });
     }
 }
@@ -81,19 +77,23 @@ function actualizarTotal() {
     const total = carrito.reduce((sum, producto) => sum + (producto.precio * producto.cantidad), 0);
     const totalElement = document.getElementById('total');
     if (totalElement) {
-        totalElement.textContent = `U$D${total.toFixed(2)}`;
+        totalElement.textContent = `U$D${total}`;
     }
 }
 
-// Simulación de pago (redirigir a un formulario de pago real)
-const pagarBtn = document.createElement('button');
-pagarBtn.textContent = 'Pagar';
-pagarBtn.addEventListener('click', () => {
-    alert('Redirigiendo a formulario de pago...'); // Simulación de pago
-    // Aquí podrías redirigir a tu página de pago real usando window.location.href
-});
+// Event listener para el botón de pagar
+document.addEventListener('DOMContentLoaded', () => {
+    const pagarBtn = document.createElement('button');
+    pagarBtn.textContent = 'Pagar';
+    pagarBtn.addEventListener('click', () => {
+        alert('Redirigiendo al formulario de pago...');
+        localStorage.removeItem('carrito');
+        actualizarCarritoDOM();
+        actualizarTotal();
+    });
 
-const totalContainer = document.getElementById('total-container');
-if (totalContainer) {
-    totalContainer.appendChild(pagarBtn);
-}
+    const totalContainer = document.getElementById('total-container');
+    if (totalContainer) {
+        totalContainer.appendChild(pagarBtn);
+    }
+});
