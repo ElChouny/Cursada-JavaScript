@@ -38,7 +38,6 @@ main {
 
 /* Estilos para la sección de Productos Destacados */
 /* Estilos básicos del carrusel */
-/* Estilos básicos del carrusel */
 .carousel {
     width: 100%;
     margin: 0 auto;
@@ -55,7 +54,6 @@ main {
 }
 
 .producto {
-    width: 100%;
     padding: 10px;
     box-sizing: border-box;
     transition: transform 0.5s ease;
@@ -64,6 +62,7 @@ main {
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin: 10px;
 }
 
 .producto img {
@@ -118,148 +117,272 @@ main h2 {
     text-align: center;
 }
 
+
 .categorias {
-    font-family: "Poppins", sans-serif;
-    font-size: 10px;
-    font-weight: 10px;
-    font-style: normal;
-    text-align: center;
     display: grid;
-    grid-template-rows: repeat(1, 1fr);
-    grid-template-columns: repeat(3, 1fr);
-    flex-wrap: nowrap;
-    padding-left: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
     margin-bottom: 20px;
 }
 
-.categorias div {
+.categorias .categoria {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    border: #004d40 solid 2px;
-    padding: 5px;
-    margin-left: 20px;
-    width: 300px;
-    height: 300px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.categorias div ul {
-    list-style: none;
-    font-style: normal;
-    font-size: 15px;
-    margin: 15px;
-}
-
-.categorias div ul li {
+    border: 2px solid #004d40;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    padding: 20px;
 }
 
-.categorias img {
-    width: 250px;
-    height: 250px;
-    padding-bottom: 20px;
+.categorias .categoria img {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
 
-    src: url(images/Rugby-shop/arg-pelota.png);
+.categorias .categoria ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.categorias .categoria ul li {
+    margin: 10px 0;
+}
+
+.categorias .categoria a {
+    font-size: 1em;
+    color: #004d40;
+    text-decoration: none;
 }
 
 /*CAMISETAS*/
-
-.producto {
-    font-family: "Poppins", sans-serif;
-    font-size: 10px;
-    font-weight: 10px;
-    padding: 25px;
-    margin: 25px;
-    font-style: normal;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+/* Estilos específicos para la sección de Camisetas */
+.camisetas .productos-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    justify-items: center;
 }
 
-.producto div {
-    grid-column-gap: 25px;
-    grid-row-gap: 25px;
-    height: 300px;
-    width: 200px;
-    border: 2px rgb(219, 144, 4) solid;
-    padding: 25px;
+.camisetas .producto {
     background-color: rgba(219, 168, 0, 0.897);
-    margin: 30px;
+    border: 2px solid rgb(219, 144, 4);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
 }
 
-.producto div img {
-    object-fit: cover;
-    width: 200px;
-    height: 200px;
-    align-items: center;
+.camisetas .producto img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px 5px 0 0;
+}
+
+.camisetas .producto h3 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+    color: #003366;
+}
+
+.camisetas .producto p {
+    font-size: 1em;
+    margin: 0.5em 0;
+    color: #555;
+}
+
+.camisetas .producto button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff3333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.camisetas .producto button:hover {
+    background-color: #cc0000;
 }
 
 /*BALONES*/
-.producto {
-    font-family: "Poppins", sans-serif;
-    font-size: 10px;
-    font-weight: 10px;
-    padding: 25px;
-    margin: 25px;
-    font-style: normal;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+/* Estilos específicos para la sección de Balones */
+.balones .productos-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px;
+    justify-items: center;
 }
 
-.producto div {
-    grid-column-gap: 25px;
-    grid-row-gap: 25px;
-    height: 300px;
-    width: 300px;
-    border: 2px rgb(219, 144, 4) solid;
-    padding: 25px;
+.balones .producto {
     background-color: rgba(219, 168, 0, 0.897);
-    margin: 30px;
+    border: 2px solid rgb(219, 144, 4);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
 }
 
-.producto div img {
-    width: 200px;
-    height: 200px;
+.balones .producto img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px 5px 0 0;
+}
+
+.balones .producto h3 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+    color: #003366;
+}
+
+.balones .producto p {
+    font-size: 1em;
+    margin: 0.5em 0;
+    color: #555;
+}
+
+.balones .producto button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff3333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.balones .producto button:hover {
+    background-color: #cc0000;
 }
 
 /*ACCESORIOS*/
-.producto {
-    font-family: "Poppins", sans-serif;
-    font-size: 10px;
-    font-weight: 10px;
-    padding: 25px;
-    margin: 25px;
-    font-style: normal;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+/* Estilos específicos para la sección de Accesorios */
+.accesorios .productos-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 20px;
+    justify-items: center;
 }
 
-
-.producto div {
-    grid-column-gap: 25px;
-    grid-row-gap: 25px;
-    height: 300px;
-    width: 300px;
-    border: 2px rgb(219, 144, 4) solid;
-    padding: 25px;
+.accesorios .producto {
     background-color: rgba(219, 168, 0, 0.897);
-    margin: 30px;
+    border: 2px solid rgb(219, 144, 4);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
 }
 
-.producto div img {
-    width: 200px;
-    height: 200px;
+.accesorios .producto img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px 5px 0 0;
+}
+
+.accesorios .producto h3 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+    color: #003366;
+}
+
+.accesorios .producto p {
+    font-size: 1em;
+    margin: 0.5em 0;
+    color: #555;
+}
+
+.accesorios .producto button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff3333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.accesorios .producto button:hover {
+    background-color: #cc0000;
+}
+
+/*ALINEACION DE PRODUCTOS*/
+/* Ajustes para alinear productos */
+.camisetas .producto,
+.balones .producto,
+.accesorios .producto {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Asegura que todos los productos ocupen el mismo espacio vertical */
+}
+
+.camisetas .productos-container,
+.balones .productos-container,
+.accesorios .productos-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+    justify-items: center;
+}
+
+.camisetas .producto img,
+.balones .producto img,
+.accesorios .producto img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px 5px 0 0;
+}
+
+.camisetas .producto h3,
+.balones .producto h3,
+.accesorios .producto h3 {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+    color: #003366;
+}
+
+.camisetas .producto p,
+.balones .producto p,
+.accesorios .producto p {
+    font-size: 1em;
+    margin: 0.5em 0;
+    color: #555;
+}
+
+.camisetas .producto button,
+.balones .producto button,
+.accesorios .producto button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #ff3333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.camisetas .producto button:hover,
+.balones .producto button:hover,
+.accesorios .producto button:hover {
+    background-color: #cc0000;
 }
 
 /*!CARRITO*/
@@ -326,10 +449,7 @@ main h2 {
     font-weight: bold;
 }
 
-
 /*?CONTACTO*/
-
-
 #contacto {
     color: black;
     flex-direction: column;

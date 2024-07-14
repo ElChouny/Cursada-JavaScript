@@ -12,15 +12,26 @@ function agregarAlCarrito(nombre, precio, imagen) {
     actualizarCarritoDOM();
     actualizarTotal();
 }
+
 // Event listener para los botones de agregar al carrito
 document.querySelectorAll('.agregar-carrito').forEach(button => {
     button.addEventListener('click', (e) => {
-        const nombre = e.target.dataset.nombre;
-        const precio = parseFloat(e.target.dataset.precio);
-        const imagen = e.target.closest('.producto').querySelector('img').src;
-        agregarAlCarrito(nombre, precio, imagen);
+        const productoDiv = e.target.closest('.producto'); // Selecciona el contenedor del producto
+        if (productoDiv) {
+            const nombre = productoDiv.dataset.nombre;
+            const precio = parseFloat(productoDiv.dataset.precio);
+            const imagen = productoDiv.querySelector('img').src; // Selecciona la imagen dentro del contenedor del producto
+
+            // Depuración: Verificar datos del producto
+            console.log('Producto seleccionado:', { nombre, precio, imagen });
+
+            agregarAlCarrito(nombre, precio, imagen);
+        } else {
+            console.error('Error: no se pudo encontrar el contenedor del producto para el botón clicado.');
+        }
     });
 });
+
 // Función para actualizar el carrito en el DOM
 function actualizarCarritoDOM() {
     const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -33,10 +44,10 @@ function actualizarCarritoDOM() {
             productoDiv.innerHTML = `
                 <img src="${producto.imagen}" alt="${producto.nombre}">
                 <h3>${producto.nombre}</h3>
-                <p>Precio unitario: U$D${producto.precio.toFixed(2)}</p>
+                <p>Precio unitario: U$D${producto.precio}</p>
                 <label for="cantidad-${index}">Cantidad:</label>
                 <input type="number" id="cantidad-${index}" name="cantidad" value="${producto.cantidad}" min="1" max="10">
-                <p>Total por producto: U$D${(producto.precio * producto.cantidad).toFixed(2)}</p>
+                <p>Total por producto: U$D${(producto.precio * producto.cantidad)}</p>
                 <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
             `;
             carritoContainer.appendChild(productoDiv);
