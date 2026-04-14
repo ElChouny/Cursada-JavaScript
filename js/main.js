@@ -21,22 +21,22 @@ function agregarAlCarrito(nombre, precio, imagen) {
     actualizarTotal();
     mostrarToast();
 
-function mostrarToast() {
-    const toast = document.getElementById("toast");
+    function mostrarToast() {
+        const toast = document.getElementById("toast");
 
-    toast.classList.add("show");
+        toast.classList.add("show");
 
-    setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2000);
-}
-actualizarContadorCarrito();
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2000);
+    }
+    actualizarContadorCarrito();
 }
 
 // Event listener para los botones de agregar al carrito
 document.querySelectorAll('.agregar-carrito').forEach(button => {
     button.addEventListener('click', (e) => {
-        
+
         const productoDiv = e.target.closest('.producto');
         if (productoDiv) {
             const nombre = productoDiv.dataset.nombre;
@@ -44,7 +44,7 @@ document.querySelectorAll('.agregar-carrito').forEach(button => {
             const imagen = productoDiv.querySelector('img').src;
             agregarAlCarrito(nombre, precio, imagen);
         }
-        
+
     });
 });
 
