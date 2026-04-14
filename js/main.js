@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     actualizarCarritoDOM();
     actualizarTotal();
+    actualizarContadorCarrito();
 });
+const toast = document.getElementById("toast");
+
 
 // Función para agregar productos al carrito
 function agregarAlCarrito(nombre, precio, imagen) {
@@ -16,11 +19,24 @@ function agregarAlCarrito(nombre, precio, imagen) {
     localStorage.setItem('carrito', JSON.stringify(carrito));
     actualizarCarritoDOM();
     actualizarTotal();
+    mostrarToast();
+
+function mostrarToast() {
+    const toast = document.getElementById("toast");
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
+}
+actualizarContadorCarrito();
 }
 
 // Event listener para los botones de agregar al carrito
 document.querySelectorAll('.agregar-carrito').forEach(button => {
     button.addEventListener('click', (e) => {
+        
         const productoDiv = e.target.closest('.producto');
         if (productoDiv) {
             const nombre = productoDiv.dataset.nombre;
@@ -28,6 +44,7 @@ document.querySelectorAll('.agregar-carrito').forEach(button => {
             const imagen = productoDiv.querySelector('img').src;
             agregarAlCarrito(nombre, precio, imagen);
         }
+        
     });
 });
 
@@ -69,6 +86,7 @@ function eliminarDelCarrito(index) {
     localStorage.setItem('carrito', JSON.stringify(carrito));
     actualizarCarritoDOM();
     actualizarTotal();
+    actualizarContadorCarrito();
 }
 
 // Función para actualizar el total del carrito
@@ -83,17 +101,53 @@ function actualizarTotal() {
 
 // Event listener para el botón de pagar
 document.addEventListener('DOMContentLoaded', () => {
-    const pagarBtn = document.createElement('button');
-    pagarBtn.textContent = 'Pagar';
-    pagarBtn.addEventListener('click', () => {
-        alert('Redirigiendo al formulario de pago...');
-        localStorage.removeItem('carrito');
-        actualizarCarritoDOM();
-        actualizarTotal();
-    });
+    const finalizarBtn = document.getElementById('finalizar-compra');
 
-    const totalContainer = document.getElementById('total-container');
-    if (totalContainer) {
-        totalContainer.appendChild(pagarBtn);
+    if (finalizarBtn) {
+        finalizarBtn.addEventListener('click', () => {
+            alert('Gracias por tu compra 🛒');
+
+            localStorage.removeItem('carrito');
+
+            actualizarCarritoDOM();
+            actualizarTotal();
+            actualizarContadorCarrito(); // importante si hiciste el mini carrito
+        });
     }
 });
+
+/*finalizarBtn.addEventListener('click', () => {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    let mensaje = "Hola! Quiero comprar:\n";
+
+    carrito.forEach(producto => {
+        mensaje += `- ${producto.nombre} x${producto.cantidad} (USD ${producto.precio})\n`;
+    });
+
+    const total = carrito.reduce((sum, p) => sum + p.precio * p.cantidad, 0);
+
+    mensaje += `\nTotal: USD ${total}`;
+
+    const numero = "549XXXXXXXXXX"; // 👈 TU número o del cliente
+
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+});*/
+
+function actualizarContadorCarrito() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    const totalItems = carrito.reduce((sum, producto) => {
+        return sum + producto.cantidad;
+    }, 0);
+
+    const contador = document.getElementById("contador-carrito");
+
+    if (contador) {
+        contador.textContent = totalItems;
+    }
+}
+
+function irAlCarrito() {
+    window.location.href = "carrito.html";
+}
