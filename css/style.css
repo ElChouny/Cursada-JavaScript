@@ -35,7 +35,6 @@ nav ul {
 nav ul li a {
     text-decoration: none;
     color: white;
-    transition: 0.3s;
 }
 
 nav ul li a:hover {
@@ -61,12 +60,10 @@ main {
     padding: 15px;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: 0.3s;
 }
 
 .producto:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .producto img {
@@ -75,15 +72,7 @@ main {
     object-fit: contain;
 }
 
-.producto h2 {
-    font-size: 16px;
-}
-
-.producto p {
-    color: #0b5d4b;
-    font-weight: bold;
-}
-
+/* BOTON */
 .producto button {
     width: 100%;
     padding: 10px;
@@ -91,40 +80,20 @@ main {
     background-color: #007bff;
     color: white;
     border: none;
-    cursor: pointer;
 }
 
-.producto button:hover {
-    background-color: #0056b3;
-}
-
+/* CARRUSEL */
 .carousel {
     width: 100%;
-    margin: 0 auto;
     padding: 20px 0;
 }
 
 .carousel .producto {
     max-width: 250px;
-    width: 90%;
+    margin: auto;
 }
 
-@media (max-width: 768px) {
-    .producto {
-        margin: 10px;
-    }
-}
-
-.slick-list {
-    overflow: hidden;
-    width: 100%;
-}
-
-
-
-.slick-track {
-    display: flex !important;
-}
+/* ❌ IMPORTANTE: NO TOCAR slick-track */
 
 /* TOAST */
 .toast {
@@ -137,8 +106,6 @@ main {
     border-radius: 8px;
     opacity: 0;
     transform: translateY(20px);
-    transition: 0.3s;
-    z-index: 1000;
 }
 
 .toast.show {
@@ -155,53 +122,27 @@ main {
     color: white;
     padding: 12px;
     border-radius: 30px;
-    cursor: pointer;
-}
-
-#contador-carrito {
-    background: #ffcc00;
-    color: black;
-    padding: 4px 8px;
-    border-radius: 50%;
 }
 
 /* CATEGORIAS */
-
-/* MOBILE */
-@media (max-width: 768px) {
-    .categorias {
-        grid-template-columns: 1fr;
-    }
+.categorias {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .categoria {
-    display: block;
-    text-align: center;
     padding: 20px;
+    background: white;
     border-radius: 12px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.categoria a {
-    display: block;
-    font-weight: bold;
-    color: #0b5d4b;
-    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .categoria img {
     width: 100%;
     height: 180px;
     object-fit: contain;
-    margin-bottom: 10px;
-}
-
-.categoria:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* CARRITO */
@@ -220,48 +161,16 @@ main {
     margin-top: 20px;
 }
 
-.btn-finalizar {
-    background: #0b5d4b;
-    color: white;
-    padding: 10px;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-}
-
+/* CONTACTO */
 #contacto {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
 }
 
 .form-contacto {
-    width: 100%;
     max-width: 400px;
-}
-
-.form-contacto div {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 15px;
-}
-
-.form-contacto input,
-.form-contacto textarea {
     width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
-.form-contacto button {
-    padding: 12px;
-    background-color: #0b5d4b;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
 }
 
 /* FOOTER */
@@ -270,7 +179,6 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem;
-
 }
 
 /* 📱 RESPONSIVE */
@@ -284,9 +192,11 @@ footer {
     }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+
     nav ul {
         flex-direction: column;
+        gap: 15px;
     }
 
     .productos-container {
@@ -301,48 +211,14 @@ footer {
         flex-direction: column;
         align-items: flex-start;
     }
-}
 
-@media (max-width: 768px) {
-    #carrito-container .producto {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-        font-size: 14px;
+    #carrito-container img {
+        width: 120px;
     }
 
-    #carrito-container h3 {
-        font-size: 16px;
-    }
-
-    #carrito-container p {
-        font-size: 14px;
-    }
-
-    #carrito-container .producto img {
-        width: 100%;
-        max-width: 150px;
-        margin-bottom: 10px;
-    }
-
-    #carrito-container input {
-        width: 60px;
-    }
-}
-
-@media (max-width: 768px) {
     .mini-carrito {
         bottom: 10px;
         left: 10px;
-        padding: 10px 12px;
         font-size: 14px;
-    }
-}
-
-@media (max-width: 768px) {
-    nav ul {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
     }
 }
