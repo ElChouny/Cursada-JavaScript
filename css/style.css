@@ -60,6 +60,13 @@ main {
     padding: 15px;
     text-align: center;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.producto h2 {
+    min-height: 50px;
 }
 
 .producto:hover {
@@ -90,7 +97,13 @@ main {
 
 .carousel .producto {
     max-width: 250px;
+    min-width: 220px;
     margin: auto;
+}
+
+.slick-slide {
+    display: flex !important;
+    justify-content: center;
 }
 
 /* ❌ IMPORTANTE: NO TOCAR slick-track */
@@ -136,7 +149,7 @@ main {
     background: white;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .categoria img {
@@ -164,13 +177,32 @@ main {
 /* CONTACTO */
 #contacto {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
 .form-contacto {
-    max-width: 400px;
     width: 100%;
+    max-width: 400px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-contacto div {
+    margin-bottom: 15px;
+}
+
+.form-contacto label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-contacto input,
+.form-contacto textarea {
+    width: 100%;
+    padding: 10px;
 }
 
 /* FOOTER */
@@ -209,11 +241,16 @@ footer {
 
     #carrito-container .producto {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
     }
 
-    #carrito-container img {
+    #carrito-container .producto img {
         width: 120px;
+    }
+
+    #carrito-container button {
+        width: 100%;
     }
 
     .mini-carrito {
